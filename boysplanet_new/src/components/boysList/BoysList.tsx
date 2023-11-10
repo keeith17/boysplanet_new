@@ -42,9 +42,9 @@ const BoysNameStyle = styled.li`
             p {
                 span {
                     font-size: 17px;
-                    &:nth-child(2) {
-                        font-size: 11px;
-                    }
+                }
+                .second {
+                    font-size: 11px;
                 }
             }
         }
@@ -65,7 +65,6 @@ export default function BoysList({ boys, onChange, boysSelect }: BoysProps) {
                     type="checkbox"
                     onChange={onChange}
                     checked={boysSelect.includes(boys.boysKName)}
-                    id={boys.boysKName}
                     name={boys.boysKName}
                     className={boys.boysType === 0 ? "korea" : "global"}
                     value={boys.boysNum}
@@ -76,7 +75,7 @@ export default function BoysList({ boys, onChange, boysSelect }: BoysProps) {
                             {boys.boysKName}
                             <br />
                         </span>
-                        <span>
+                        <span className="second">
                             {boys.boysEName}
                             <br />
                         </span>

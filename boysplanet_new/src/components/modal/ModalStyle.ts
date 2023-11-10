@@ -9,6 +9,7 @@ export const ModalWrap = styled.div`
     height: 100%;
     background: rgba(0, 0, 0, 0.3);
     display: flex;
+    z-index: 2;
 `;
 
 export const ModalContainer = styled.div`
@@ -16,7 +17,7 @@ export const ModalContainer = styled.div`
     height: 420px;
     margin: auto;
     padding: 80px;
-    background: $maincolor;
+    background: #120a30;
     border-radius: 10px;
     border: 3px solid rgb(255, 255, 255, 0.5);
 `;
@@ -40,7 +41,7 @@ export const ModalButtonBox = styled.div`
 export const ModalLink = styled(Link)`
     width: 90%;
     text-align: center;
-    background: $buttoncolor;
+    background: #322d59;
     margin: 10px auto;
     padding: 15px 0;
     color: #fff;

@@ -8,12 +8,18 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 export default function App() {
     const [modalShow, setModalShow] = useState<boolean>(false);
+    const modalCloseFn = () => {
+        setModalShow(false);
+    };
+    const modalOpenFn = () => {
+        setModalShow(true);
+    };
     return (
         <>
             <Global styles={global} />
             <Layout>
-                {modalShow && <Modal />}
-                <Router />
+                {modalShow && <Modal modalCloseFn={modalCloseFn} />}
+                <Router modalOpenFn={modalOpenFn} />
             </Layout>
             <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
         </>

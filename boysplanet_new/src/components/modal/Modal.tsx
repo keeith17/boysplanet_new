@@ -7,8 +7,11 @@ import {
     ModalWrap,
 } from "./ModalStyle";
 
-export default function Modal() {
-    const onClickClose = () => {};
+interface ModalCloseProps {
+    modalCloseFn: () => void;
+}
+
+export default function Modal({ modalCloseFn }: ModalCloseProps) {
     return (
         <ModalWrap>
             <ModalContainer>
@@ -18,10 +21,11 @@ export default function Modal() {
                     </ModalLi>
                 </ul>
                 <ModalButtonBox>
-                    <ModalLink to="/" onClick={onClickClose}>
+                    {/* <Button url="/" width="80%" text="처음으로" /> */}
+                    <ModalLink to="/" onClick={modalCloseFn}>
                         처음으로
                     </ModalLink>
-                    <ModalLink to="/ResultPage" onClick={onClickClose}>
+                    <ModalLink to="/ResultPage" onClick={modalCloseFn}>
                         결과 확인하러 가기
                     </ModalLink>
                 </ModalButtonBox>

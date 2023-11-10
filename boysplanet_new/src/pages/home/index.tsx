@@ -13,8 +13,12 @@ export default function Homepage() {
                 <p>크롬 또는 사파리로 접속하세요.</p>
             </HomeGuide>
             <HomeButtons>
-                <Button url="/VotePage" text="투표하러 가기" />
-                <Button url="/ResultPage" text="결과 확인하러 가기" />
+                <Button url="/VotePage" text="투표하러 가기" width="100%" />
+                <Button
+                    url="/ResultPage"
+                    text="결과 확인하러 가기"
+                    width="100%"
+                />
             </HomeButtons>
         </HomeWrap>
     );

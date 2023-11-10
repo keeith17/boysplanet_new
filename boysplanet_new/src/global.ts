@@ -11,7 +11,6 @@ export const global = css`
     html,
     body {
         width: 100%;
-        height: 100%;
     }
 
     body {
@@ -65,5 +64,11 @@ export const global = css`
         height: 100%;
         display: flex;
         align-items: center;
+    }
+
+    button {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
     }
 `;

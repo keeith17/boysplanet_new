@@ -4,7 +4,6 @@ export const HomeWrap = styled.div`
     width: 100%;
     height: 100vh;
     padding: 20px 80px;
-    background: #1b1546;
     display: flex;
     flex-flow: wrap;
     justify-content: space-between;

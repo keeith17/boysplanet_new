@@ -1,12 +1,16 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 
-const ButtonStyle = styled.div`
+interface ButtonStyleProps {
+    buttonWidth: string;
+}
+const ButtonStyle = styled.div<ButtonStyleProps>`
     padding: 15px 0;
     width: 100%;
     a {
         display: block;
-        width: 100%;
+        margin: 0 auto;
+        width: ${(props) => props.buttonWidth};
         background: #322d59;
         color: #fff;
         font-size: 35px;
@@ -23,11 +27,12 @@ const ButtonStyle = styled.div`
 interface ButtonProps {
     text: string;
     url: string;
+    width: string;
 }
 
-export const Button = ({ text, url }: ButtonProps) => {
+export const Button = ({ text, url, width }: ButtonProps) => {
     return (
-        <ButtonStyle>
+        <ButtonStyle buttonWidth={width}>
             <Link to={url}>{text}</Link>
         </ButtonStyle>
     );
