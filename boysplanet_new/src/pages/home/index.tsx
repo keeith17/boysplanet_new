@@ -1,4 +1,4 @@
-import Logo from "@/assets/BP-title.png";
+import Logo from "@/assets/BP-title.webp";
 import { HomeButtons, HomeGuide, HomeImgBox, HomeWrap } from "./homeStyle";
 import { Button } from "@/components/button/Button";
 
