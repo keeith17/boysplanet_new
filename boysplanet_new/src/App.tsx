@@ -4,6 +4,7 @@ import Modal from "@/components/modal/Modal";
 import { global } from "./global";
 import { useState } from "react";
 import { Layout } from "./components/Layout";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 export default function App() {
     const [modalShow, setModalShow] = useState<boolean>(false);
@@ -14,6 +15,7 @@ export default function App() {
                 {modalShow && <Modal />}
                 <Router />
             </Layout>
+            <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
         </>
     );
 }
