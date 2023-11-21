@@ -9,6 +9,7 @@ import {
     ListCheckStyle,
     PickStyle,
     SubmitStyle,
+    VoteStyle,
 } from "./voteStyle";
 
 interface ModalVoteProps {
@@ -134,7 +135,7 @@ export default function VotePage({ modalOpenFn }: ModalVoteProps) {
     } = useQuery("boysList", getBoysList);
 
     return (
-        <div className="vote-wrap">
+        <VoteStyle>
             <PickStyle>
                 <div className="title">
                     <div className="title-gap">
@@ -245,6 +246,6 @@ export default function VotePage({ modalOpenFn }: ModalVoteProps) {
                     <button onClick={onClickPost}>투표 완료</button>
                 )}
             </SubmitStyle>
-        </div>
+        </VoteStyle>
     );
 }

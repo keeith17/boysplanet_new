@@ -1,5 +1,9 @@
 import styled from "@emotion/styled";
 
+export const VoteStyle = styled.div`
+    padding-top: 30px;
+`;
+
 export const PickStyle = styled.div`
     width: 100%;
     padding: 40px 11.1111%;

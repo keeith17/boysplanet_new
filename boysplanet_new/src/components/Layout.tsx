@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { ReactNode } from "react";
+import Header from "./header/Header";
 
 const LayoutStyle = styled.div`
     max-width: 720px;
@@ -13,5 +14,10 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children }: LayoutProps) => {
-    return <LayoutStyle>{children}</LayoutStyle>;
+    return (
+        <LayoutStyle>
+            <Header />
+            {children}
+        </LayoutStyle>
+    );
 };
