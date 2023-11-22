@@ -1,11 +1,47 @@
+import axios from "axios";
 import {
+    RankingStyle,
     ResultContentsStyle,
     ResultInfoStyle,
     ResultStyle,
     ResultTitleStyle,
 } from "./resultStyle";
+import { useQuery } from "react-query";
+import { BoysListProps } from "../vote";
+import { useState } from "react";
+
+export interface BoysVoteProps {
+    boysNum: number;
+    boysKVote: number;
+    boysGVote: number;
+}
+
+export interface BoysAllProps {
+    boysDeadDate: null;
+    boysEName: string;
+    boysIsDead: number;
+    boysJName: string;
+    boysKName: string;
+    boysNum: number;
+    boysType: number;
+    boysKVote: number;
+    boysGVote: number;
+}
+
+export interface BoysOfficialProps {
+    boysNum: number;
+    boysRank: number;
+    boysAVote: number;
+    boysKName: string;
+    boysEName: string;
+    boysJName: string;
+    boysType: number;
+}
 
 export default function ResultPage() {
+    //필터 선택한 것
+    const [selected, setSelected] = useState<string>("forTeam");
+
     //새로고침 시간 확인
     const thisTimes = () => {
         const now = new Date(); // 현재 날짜 및 시간
@@ -19,7 +55,67 @@ export default function ResultPage() {
         return String(`${year}년 ${month}월 ${date}일 ${hours}시`);
         // }
     };
-    const onChangeSelect = () => {};
+
+    // 1명 투표 데이터
+    const getOneSurvey = async () => {
+        const response = await axios.get(
+            `${process.env.VITE_DEFAULT_API_URL}/getCurrSurvey?isDead=0`
+        );
+        const addList = new Map();
+        response.data.oneResult.boysInfo.forEach((item: BoysListProps) =>
+            addList.set(item.boysNum, item)
+        );
+        response.data.oneResult.oneVoteInfo.forEach((item: BoysVoteProps) =>
+            addList.set(item.boysNum, { ...addList.get(item.boysNum), ...item })
+        );
+        return Array.from(addList.values());
+    };
+    const {
+        data: oneSurvey,
+        isLoading: oneSurveyLoading,
+        isError: oneSurveyError,
+    } = useQuery("oneSurvey", getOneSurvey);
+
+    // 팀(여러 명) 투표 데이터
+    const getTeamSurvey = async () => {
+        const response = await axios.get(
+            `${process.env.VITE_DEFAULT_API_URL}/getCurrSurvey?isDead=0`
+        );
+        const addList = new Map();
+        response.data.teamResult.boysInfo.forEach((item: BoysListProps) =>
+            addList.set(item.boysNum, item)
+        );
+        response.data.teamResult.teamVoteInfo.forEach((item: BoysVoteProps) =>
+            addList.set(item.boysNum, { ...addList.get(item.boysNum), ...item })
+        );
+        return Array.from(addList.values());
+    };
+    const {
+        data: teamSurvey,
+        isLoading: teamSurveyLoading,
+        isError: teamSurveyError,
+    } = useQuery("teamSurvey", getTeamSurvey);
+
+    //투표 데이터 받아 오기
+    const getOfficialInfo = async () => {
+        const response = await axios.get(
+            `${process.env.VITE_DEFAULT_API_URL}/getOfficialInfo?ep=8`
+        );
+        return response.data.data;
+    };
+
+    const {
+        data: officalInfo,
+        isLoading: officalInfoLoading,
+        isError: officalInfoError,
+    } = useQuery("officalInfo", getOfficialInfo);
+
+    const onChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        const {
+            target: { value },
+        } = e;
+        setSelected(value);
+    };
     return (
         <ResultStyle>
             <ResultTitleStyle>
@@ -31,15 +127,86 @@ export default function ResultPage() {
                     <div className="times">{thisTimes()}</div>
                     <div className="filter-box">
                         <select onChange={onChangeSelect}>
-                            <option value="forSix">3인 기준</option>
+                            <option value="forTeam">3인 기준</option>
                             <option value="forOne">원픽 기준</option>
                             <option value="forOff">방송 순위</option>
                         </select>
                     </div>
                 </ResultInfoStyle>
-                <div className="ranking">
-                    <ul className="boys-ranking">{/* {boysTeamRankList} */}</ul>
-                </div>
+                <RankingStyle>
+                    <ul className="boys-ranking">
+                        {selected === "forOff" ? (
+                            officalInfoLoading ? (
+                                <div>Loading...</div>
+                            ) : officalInfoError ? (
+                                <div>Error</div>
+                            ) : (
+                                officalInfo?.map(
+                                    (
+                                        boys: BoysOfficialProps,
+                                        index: number
+                                    ) => (
+                                        <li
+                                            className={
+                                                (boys.boysType === 0
+                                                    ? "korea"
+                                                    : "global") +
+                                                (index < 9 ? " topNine" : "")
+                                            }
+                                            key={boys.boysKName}
+                                        >
+                                            <div className="content-wrap">
+                                                <p>{index + 1}위</p>
+                                                <p>{boys.boysKName}</p>
+                                                <p>{boys.boysEName}</p>
+                                                <p>{boys?.boysAVote}표</p>
+                                            </div>
+                                        </li>
+                                    )
+                                )
+                            )
+                        ) : (
+                              selected === "forTeam"
+                                  ? teamSurveyLoading
+                                  : oneSurveyLoading
+                          ) ? (
+                            <div>Loading...</div>
+                        ) : (
+                              selected === "forTeam"
+                                  ? teamSurveyError
+                                  : oneSurveyError
+                          ) ? (
+                            <div>Error</div>
+                        ) : (
+                            (selected === "forTeam"
+                                ? teamSurvey
+                                : oneSurvey
+                            )?.map((boys: BoysAllProps, index: number) => (
+                                <li
+                                    className={
+                                        boys.boysType === 0 ? "korea" : "global"
+                                    }
+                                    key={boys.boysKName}
+                                >
+                                    <div className="content-wrap">
+                                        <p>{index + 1}위</p>
+                                        <p>{boys.boysKName}</p>
+                                        <p>{boys.boysEName}</p>
+                                        <p>
+                                            {(boys?.boysKVote + boys?.boysGVote)
+                                                .toString()
+                                                .replace(
+                                                    /\B(?=(\d{3})+(?!\d))/g,
+                                                    ","
+                                                )}
+                                            표
+                                        </p>
+                                    </div>
+                                </li>
+                            ))
+                        )}
+                    </ul>
+                </RankingStyle>
             </ResultContentsStyle>
         </ResultStyle>
     );
