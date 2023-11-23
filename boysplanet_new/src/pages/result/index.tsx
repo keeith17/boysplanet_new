@@ -38,6 +38,8 @@ export interface BoysOfficialProps {
     boysType: number;
 }
 
+const apiUrl = import.meta.env.VITE_DEFAULT_API_URL;
+
 export default function ResultPage() {
     //필터 선택한 것
     const [selected, setSelected] = useState<string>("forTeam");
@@ -58,9 +60,7 @@ export default function ResultPage() {
 
     // 1명 투표 데이터
     const getOneSurvey = async () => {
-        const response = await axios.get(
-            `${process.env.VITE_DEFAULT_API_URL}/getCurrSurvey?isDead=0`
-        );
+        const response = await axios.get(`${apiUrl}/getCurrSurvey?isDead=0`);
         const addList = new Map();
         response.data.oneResult.boysInfo.forEach((item: BoysListProps) =>
             addList.set(item.boysNum, item)
@@ -78,9 +78,7 @@ export default function ResultPage() {
 
     // 팀(여러 명) 투표 데이터
     const getTeamSurvey = async () => {
-        const response = await axios.get(
-            `${process.env.VITE_DEFAULT_API_URL}/getCurrSurvey?isDead=0`
-        );
+        const response = await axios.get(`${apiUrl}/getCurrSurvey?isDead=0`);
         const addList = new Map();
         response.data.teamResult.boysInfo.forEach((item: BoysListProps) =>
             addList.set(item.boysNum, item)
@@ -98,9 +96,7 @@ export default function ResultPage() {
 
     //투표 데이터 받아 오기
     const getOfficialInfo = async () => {
-        const response = await axios.get(
-            `${process.env.VITE_DEFAULT_API_URL}/getOfficialInfo?ep=8`
-        );
+        const response = await axios.get(`${apiUrl}/getOfficialInfo?ep=8`);
         return response.data.data;
     };
 
@@ -156,9 +152,15 @@ export default function ResultPage() {
                                             key={boys.boysKName}
                                         >
                                             <div className="content-wrap">
-                                                <p>{index + 1}위</p>
-                                                <p>{boys.boysKName}</p>
-                                                <p>{boys.boysEName}</p>
+                                                <p className="rank">
+                                                    {index + 1}위
+                                                </p>
+                                                <p className="rankKName">
+                                                    {boys.boysKName}
+                                                </p>
+                                                <p className="rankEName">
+                                                    {boys.boysEName}
+                                                </p>
                                                 <p>{boys?.boysAVote}표</p>
                                             </div>
                                         </li>
@@ -184,14 +186,21 @@ export default function ResultPage() {
                             )?.map((boys: BoysAllProps, index: number) => (
                                 <li
                                     className={
-                                        boys.boysType === 0 ? "korea" : "global"
+                                        (boys.boysType === 0
+                                            ? "korea"
+                                            : "global") +
+                                        (index < 9 ? " topNine" : "")
                                     }
                                     key={boys.boysKName}
                                 >
                                     <div className="content-wrap">
-                                        <p>{index + 1}위</p>
-                                        <p>{boys.boysKName}</p>
-                                        <p>{boys.boysEName}</p>
+                                        <p className="rank">{index + 1}위</p>
+                                        <p className="rankKName">
+                                            {boys.boysKName}
+                                        </p>
+                                        <p className="rankEName">
+                                            {boys.boysEName}
+                                        </p>
                                         <p>
                                             {(boys?.boysKVote + boys?.boysGVote)
                                                 .toString()

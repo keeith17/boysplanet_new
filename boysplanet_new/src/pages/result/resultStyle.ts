@@ -70,66 +70,60 @@ export const RankingStyle = styled.div`
                     font-size: 18px;
                     width: 25%;
                     text-align: center;
-                    &:nth-child(1) {
+                    &.rank {
                         width: 15%;
                     }
-                    &:nth-child(2) {
+                    &.rankKName {
                         font-weight: 700;
                         font-size: 20px;
                     }
-                    &:nth-child(3) {
+                    &.rankEName {
                         width: 35%;
                     }
                 }
             }
             &.korea {
-                p {
-                    &:nth-child(2) {
-                        color: #3395fe;
-                    }
+                .rankKName {
+                    color: #3395fe;
                 }
             }
             &.global {
-                p {
-                    &:nth-child(2) {
-                        color: #d74696;
-                    }
+                .rankKName {
+                    color: #d74696;
                 }
             }
-            @for $i from 1 through 9 {
-                &:nth-child(#{$i}) {
-                    width: 33.333%;
-                    .content-wrap {
+            &.topNine {
+                width: 33.333%;
+                .content-wrap {
+                    width: 100%;
+                    padding: 15px 0;
+                    border-radius: 10px;
+                    p {
+                        display: block;
                         width: 100%;
-                        padding: 15px 0;
-                        border-radius: 10px;
-                        p {
-                            display: block;
-                            width: 100%;
-                            text-align: center;
-                            padding: 10px 0;
-                            font-size: 18px;
-                            font-weight: 500;
-                            &:nth-child(1) {
-                                font-size: 25px;
-                            }
-                            &:nth-child(2) {
-                                padding: 0;
-                                font-size: 30px;
-                                font-weight: 700;
-                                color: white;
-                            }
+                        text-align: center;
+                        padding: 10px 0;
+                        font-size: 18px;
+                        font-weight: 500;
+                        &.rank {
+                            font-size: 25px;
+                        }
+                        &.rankKName {
+                            padding: 0;
+                            font-size: 30px;
+                            font-weight: 700;
+                            color: white;
                         }
                     }
-                    &.korea {
-                        .content-wrap {
-                            background: #3395fe;
-                        }
+                }
+                &.korea {
+                    .content-wrap {
+                        background: #3395fe;
                     }
-                    &.global {
-                        .content-wrap {
-                            background: #d74696;
-                        }
+                }
+                &.global {
+                    .content-wrap {
+                        background: #d74696;
                     }
                 }
             }
