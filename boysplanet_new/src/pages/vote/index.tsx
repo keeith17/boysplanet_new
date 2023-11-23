@@ -32,9 +32,7 @@ interface FormdataProps {
 
 const apiUrl = import.meta.env.VITE_DEFAULT_API_URL;
 const getBoysList = async () => {
-    const response = await axios.get(
-        `http://boysplanet.hkamio.com:8080/getBoysList?isDead=0&sort=kor`
-    );
+    const response = await axios.get(`${apiUrl}/getBoysList?isDead=0&sort=kor`);
     return response.data;
 };
 
@@ -42,10 +40,7 @@ export default function VotePage({ modalOpenFn }: ModalVoteProps) {
     const mutation = useMutation(
         // 첫 번째 매개변수: 비동기 함수, 서버에 요청을 보내는 역할
         async (postData: FormdataProps) => {
-            const response = await axios.post(
-                `http://boysplanet.hkamio.com:8080/survey`,
-                postData
-            );
+            const response = await axios.post(`${apiUrl}/survey`, postData);
 
             return response.data; // 성공 시 응답 데이터를 반환
         },

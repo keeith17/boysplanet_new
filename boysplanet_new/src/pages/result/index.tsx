@@ -60,9 +60,7 @@ export default function ResultPage() {
 
     // 1명 투표 데이터
     const getOneSurvey = async () => {
-        const response = await axios.get(
-            `http://boysplanet.hkamio.com:8080/getCurrSurvey?isDead=0`
-        );
+        const response = await axios.get(`${apiUrl}/getCurrSurvey?isDead=0`);
         const addList = new Map();
         response.data.oneResult.boysInfo.forEach((item: BoysListProps) =>
             addList.set(item.boysNum, item)
@@ -80,9 +78,7 @@ export default function ResultPage() {
 
     // 팀(여러 명) 투표 데이터
     const getTeamSurvey = async () => {
-        const response = await axios.get(
-            `http://boysplanet.hkamio.com:8080/getCurrSurvey?isDead=0`
-        );
+        const response = await axios.get(`${apiUrl}/getCurrSurvey?isDead=0`);
         const addList = new Map();
         response.data.teamResult.boysInfo.forEach((item: BoysListProps) =>
             addList.set(item.boysNum, item)
@@ -100,9 +96,7 @@ export default function ResultPage() {
 
     //투표 데이터 받아 오기
     const getOfficialInfo = async () => {
-        const response = await axios.get(
-            `http://boysplanet.hkamio.com:8080/getOfficialInfo?ep=8`
-        );
+        const response = await axios.get(`${apiUrl}/getOfficialInfo?ep=8`);
         return response.data.data;
     };
 
