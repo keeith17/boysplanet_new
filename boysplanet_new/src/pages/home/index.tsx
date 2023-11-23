@@ -6,7 +6,7 @@ export default function Homepage() {
     return (
         <HomeWrap>
             <HomeImgBox>
-                <img src={Logo} alt="logo" />
+                <img src={Logo} alt="logo" width={600} height={600} />
             </HomeImgBox>
             <HomeGuide>
                 <p>실제 투표가 아닌 여론 조사 서비스입니다.</p>

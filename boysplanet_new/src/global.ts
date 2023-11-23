@@ -14,7 +14,7 @@ export const global = css`
     }
 
     body {
-        font: normal 14px/1 "Noto Sans KR", "arial";
+        font: normal 14px/1 "Malgun Gothic", "Noto Sans KR", "arial";
         overflow-x: overlay;
         overflow-y: overlay;
         background: #120a30;

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Title from "@/assets/ittle.png";
 import styled from "@emotion/styled";
+import { IoMdRefresh } from "react-icons/io";
 
 const HeaderStyle = styled.header`
     width: 100%;
@@ -26,10 +27,7 @@ const HeaderStyle = styled.header`
         margin: 0 0 0 auto;
         .reloading-wrap {
             cursor: pointer;
-            i {
-                font-size: 30px;
-                cursor: pointer;
-            }
+            font-size: 27px;
         }
     }
 `;
@@ -40,14 +38,12 @@ export default function Header() {
         <HeaderStyle>
             <div className="logo">
                 <Link to="/">
-                    <img src={Title} alt="Title" />
+                    <img src={Title} alt="Title" width={200} />
                 </Link>
             </div>
             <div className="reloading">
                 <div className="reloading-wrap">
-                    <i className="material-icons" onClick={onClickReload}>
-                        refresh
-                    </i>
+                    <IoMdRefresh onClick={onClickReload} />
                 </div>
             </div>
         </HeaderStyle>
