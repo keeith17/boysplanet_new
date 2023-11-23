@@ -29,11 +29,9 @@ interface FormdataProps {
     teamPickSurvey: number[];
     onePickSurvey: number | null;
 }
-
+const apiUrl = import.meta.env.VITE_DEFAULT_API_URL;
 const getBoysList = async () => {
-    const response = await axios.get(
-        `${process.env.VITE_DEFAULT_API_URL}/getBoysList?isDead=0&sort=kor`
-    );
+    const response = await axios.get(`${apiUrl}/getBoysList?isDead=0&sort=kor`);
     return response.data;
 };
 
