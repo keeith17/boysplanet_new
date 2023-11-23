@@ -32,7 +32,7 @@ interface FormdataProps {
 
 export const getBoysList = async () => {
     const response = await axios.get(
-        `${process.env.VITE_DEFAULT_API_URL}/getBoysList?isDead=0&sort=kor`
+        `${VITE_DEFAULT_API_URL}/getBoysList?isDead=0&sort=kor`
     );
     return response.data;
 };
@@ -42,7 +42,7 @@ export default function VotePage({ modalOpenFn }: ModalVoteProps) {
         // 첫 번째 매개변수: 비동기 함수, 서버에 요청을 보내는 역할
         async (postData: FormdataProps) => {
             const response = await axios.post(
-                `${process.env.VITE_DEFAULT_API_URL}/survey`,
+                `${VITE_DEFAULT_API_URL}/survey`,
                 postData
             );
 
