@@ -134,12 +134,8 @@ export default function VotePage({ modalOpenFn }: ModalVoteProps) {
         <VoteStyle>
             <PickStyle>
                 <div className="title">
-                    <div className="title-gap">
-                        <div className="title-wrap">
-                            <p>세 번째 글로벌 투표 (3인)</p>
-                            <p>The Third Global Vote (3 members)</p>
-                        </div>
-                    </div>
+                    <p>세 번째 글로벌 투표 (3인)</p>
+                    <p>The Third Global Vote (3 members)</p>
                 </div>
                 <CountStyle>
                     <ul className="counting-wrap">

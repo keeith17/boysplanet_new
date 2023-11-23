@@ -1,6 +1,12 @@
 import { css } from "@emotion/react";
 
 export const global = css`
+    @font-face {
+        font-family: "Noto Sans KR";
+        font-weight: normal;
+        src: url("./fonts/NotoSansKR-VariableFont_wght.ttf") format("truetype");
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -14,7 +20,9 @@ export const global = css`
     }
 
     body {
-        font: normal 14px/1 "Malgun Gothic", "Noto Sans KR", "arial";
+        // font-family: "Noto Sans KR";
+        font: normal 14px/1 "Noto Sans KR", "Malgun Gothic", "arial";
+        letter-spacing: -0.3px;
         overflow-x: overlay;
         overflow-y: overlay;
         background: #120a30;

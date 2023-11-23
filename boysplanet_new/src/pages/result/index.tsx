@@ -133,9 +133,9 @@ export default function ResultPage() {
                     <ul className="boys-ranking">
                         {selected === "forOff" ? (
                             officalInfoLoading ? (
-                                <div>Loading...</div>
+                                <li>Loading...</li>
                             ) : officalInfoError ? (
-                                <div>Error</div>
+                                <li>Error</li>
                             ) : (
                                 officalInfo?.map(
                                     (
@@ -172,13 +172,13 @@ export default function ResultPage() {
                                   ? teamSurveyLoading
                                   : oneSurveyLoading
                           ) ? (
-                            <div>Loading...</div>
+                            <li>Loading...</li>
                         ) : (
                               selected === "forTeam"
                                   ? teamSurveyError
                                   : oneSurveyError
                           ) ? (
-                            <div>Error</div>
+                            <li>Error</li>
                         ) : (
                             (selected === "forTeam"
                                 ? teamSurvey
@@ -201,7 +201,7 @@ export default function ResultPage() {
                                         <p className="rankEName">
                                             {boys.boysEName}
                                         </p>
-                                        <p>
+                                        <p className="howMany">
                                             {(boys?.boysKVote + boys?.boysGVote)
                                                 .toString()
                                                 .replace(

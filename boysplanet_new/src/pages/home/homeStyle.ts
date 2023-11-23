@@ -8,6 +8,9 @@ export const HomeWrap = styled.div`
     flex-flow: wrap;
     justify-content: space-between;
     align-items: center;
+    @media all and (max-width: 700px) {
+        padding: 20px;
+    }
 `;
 
 export const HomeImgBox = styled.div`
@@ -25,6 +28,12 @@ export const HomeGuide = styled.div`
     p {
         padding: 2px 0;
         font-size: 18px;
+    }
+    @media all and (max-width: 700px) {
+        padding: 0 0 20px 0;
+        p {
+            font-size: 16px;
+        }
     }
 `;
 

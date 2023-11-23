@@ -7,7 +7,7 @@ const HeaderStyle = styled.header`
     width: 100%;
     max-width: 720px;
     background: #322d59;
-    padding: 10px 20px;
+    padding: 15px 20px;
     display: flex;
     position: fixed;
     z-index: 2;
@@ -15,7 +15,7 @@ const HeaderStyle = styled.header`
         display: flex;
         align-items: center;
         a {
-            display: block;
+            display: flex;
             color: #fff;
             font-size: 20px;
             img {
@@ -28,7 +28,11 @@ const HeaderStyle = styled.header`
         .reloading-wrap {
             cursor: pointer;
             font-size: 27px;
+            display: flex;
         }
+    }
+    @media all and (max-width: 700px) {
+        padding: 10px 10px;
     }
 `;
 

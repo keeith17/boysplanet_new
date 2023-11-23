@@ -9,16 +9,10 @@ export const PickStyle = styled.div`
     padding: 40px 11.1111%;
     .title {
         width: 100%;
-        .title-gap {
-            width: 100%;
-            .title-wrap {
-                width: 100%;
-                p {
-                    text-align: center;
-                    padding: 5px 0;
-                    font-size: 25px;
-                }
-            }
+        p {
+            text-align: center;
+            padding: 5px 0;
+            font-size: 25px;
         }
     }
     .select {
@@ -43,6 +37,15 @@ export const PickStyle = styled.div`
             }
         }
     }
+    @media all and (max-width: 700px) {
+        padding: 30px 8%;
+        .title {
+            p {
+                font-size: 18px;
+                padding: 0;
+            }
+        }
+    }
 `;
 export const CountStyle = styled.div`
     width: 100%;
@@ -60,6 +63,14 @@ export const CountStyle = styled.div`
             margin: 0 3px;
         }
     }
+    @media all and (max-width: 700px) {
+        .counting-wrap {
+            .kok {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
 `;
 
 export const BoysListStyle = styled.ul`
@@ -75,6 +86,9 @@ export const ListCheckStyle = styled.div`
         font-size: 20px;
         padding: 15px 0;
         line-height: 25px;
+    }
+    @media all and (max-width: 700px) {
+        padding: 0 8%;
     }
 `;
 
@@ -101,6 +115,9 @@ export const SubmitStyle = styled.div`
         &:hover {
             background: #6561897c;
         }
+    }
+    @media all and (max-width: 700px) {
+        padding: 20px 8% 8% 8%;
     }
 `;
 

@@ -22,6 +22,12 @@ const ButtonStyle = styled.div<ButtonStyleProps>`
             background: #6561897c;
         }
     }
+    @media all and (max-width: 700px) {
+        padding: 10px 0;
+        a {
+            font-size: 24px;
+        }
+    }
 `;
 
 interface ButtonProps {

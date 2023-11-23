@@ -20,16 +20,27 @@ export const ModalContainer = styled.div`
     background: #120a30;
     border-radius: 10px;
     border: 3px solid rgb(255, 255, 255, 0.5);
+    @media all and (max-width: 700px) {
+        width: 85vw;
+        height: 300px;
+        padding: 30px 25px;
+    }
 `;
 
 export const ModalLi = styled.li`
     width: 100%;
     padding: 50px 0;
+    @media all and (max-width: 700px) {
+        padding: 35px 0;
+    }
 `;
 
 export const ModalH2 = styled.h2`
     text-align: center;
     font-size: 35px;
+    @media all and (max-width: 700px) {
+        font-size: 24px;
+    }
 `;
 
 export const ModalButtonBox = styled.div`

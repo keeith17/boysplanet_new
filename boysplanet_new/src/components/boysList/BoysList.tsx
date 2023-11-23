@@ -49,6 +49,18 @@ const BoysNameStyle = styled.li`
             }
         }
     }
+    @media all and (max-width: 700px) {
+        width: 33.333%;
+        label {
+            .labeling {
+                p {
+                    .second {
+                        letter-spacing: -0.3px;
+                    }
+                }
+            }
+        }
+    }
 `;
 
 interface BoysProps {
