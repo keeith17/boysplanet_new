@@ -38,7 +38,12 @@ export default function Header() {
         <HeaderStyle>
             <div className="logo">
                 <Link to="/">
-                    <img src={Title} alt="Title" width={200} />
+                    <img
+                        src={Title}
+                        alt="Title"
+                        max-width={200}
+                        max-height={27}
+                    />
                 </Link>
             </div>
             <div className="reloading">
