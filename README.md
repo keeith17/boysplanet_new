@@ -13,7 +13,7 @@ yarn run dev
 ## 사용한 skill
 
 FRONT: React.js, typescript, Axios + react-query, emotion(styled-component)  
-DEPLOY:Aws
+DEPLOY:Vercel
 
 ## 구현 기능
 
